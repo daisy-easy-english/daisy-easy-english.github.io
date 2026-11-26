@@ -810,14 +810,13 @@ body.sw-on .sww{display:block;}
     </div>
     <div class="colophon">
       <p><b>출처</b> 교육부 고시 제2022-33호 [별표 3] 기본 어휘 목록 · 초등학교 권장 어휘 800단어 (2026학년도 초등 전 학년 적용)</p>
-      <p>발음은 기기에 설치된 음성(TTS)으로 재생됩니다. 음성이 없는 기기에서는 영어 기본 음성으로 대신 읽어요.</p>
+      <p>발음은 원어민 음성(MP3)으로 재생됩니다. 인스타그램·카카오톡 안에서도 같은 소리로 들려요.</p>
       <details>
         <summary>소리가 안 들릴 때</summary>
         <ul>
           <li>아이폰은 측면 무음 스위치를 켜고, 볼륨을 올려 주세요.</li>
-          <li>안드로이드는 설정 › 언어 및 입력 › 텍스트 음성 변환에서 영어 음성(미국·영국)을 내려받으면 두 발음이 모두 나옵니다.</li>
-          <li>카카오톡·인스타 안의 브라우저보다 크롬·사파리에서 여는 편이 안정적입니다.</li>
-          <li>아이폰에서 구간 듣기가 중간에 멈추면, 단어를 하나씩 눌러 들으면 됩니다.</li>
+          <li>처음 재생할 때는 음원을 내려받느라 1초 정도 걸릴 수 있어요. 한 번 들은 구간은 바로 재생됩니다.</li>
+          <li>인터넷이 끊기면 소리가 나지 않아요. 와이파이나 데이터 연결을 확인해 주세요.</li>
         </ul>
       </details>
       <p class="end">© 2026 뮤엠영어 산빛초점 · 데이지 원장 · @daisy_easy_english</p>
@@ -846,7 +845,7 @@ body.sw-on .sww{display:block;}
       <p class="phbest" id="phBest" hidden></p>
     </section>
 
-    <p class="phnote">발음은 기기에 설치된 영어 음성(TTS)으로 재생됩니다. 소리가 안 나면 무음 스위치를 끄고 볼륨을 올려 주세요.</p>
+    <p class="phnote">발음은 원어민 음성(MP3)으로 재생됩니다. 소리가 안 나면 무음 스위치를 끄고 볼륨을 올려 주세요.</p>
     <a class="phlink" href="./app.html">← 800단어 주제별 단어장 보기</a>
     <footer class="phfoot">
       근거: 교육부 2022 개정 영어과 교육과정 성취기준 [4영01-04]·[4영02-03] ·
@@ -912,7 +911,7 @@ body.sw-on .sww{display:block;}
       <p class="swbest" id="swBest" hidden></p>
     </section>
 
-    <p class="swnote">발음은 기기에 설치된 영어 음성(TTS)으로 재생됩니다. 소리가 안 나면 무음 스위치를 끄고 볼륨을 올려 주세요.</p>
+    <p class="swnote">발음은 원어민 음성(MP3)으로 재생됩니다. 소리가 안 나면 무음 스위치를 끄고 볼륨을 올려 주세요.</p>
     <a class="swlink" href="./app.html">← 800단어 주제별 단어장 보기</a>
     <footer class="swfoot">
       근거: 교육부 2022 개정 영어과 교육과정 [별표 3] 기본 어휘(기능어) ·
@@ -1399,7 +1398,7 @@ function speakText(text, lang, opts){
 function speakSynth(text, lang, opts){
   opts = opts || {};
   if (!synth) {
-    hint('이 브라우저에서는 읽어주기를 지원하지 않아요. 크롬이나 사파리 최신 버전에서 열어 주세요.', 'nosynth');
+    if (!(window.DaisyAudio && DaisyAudio.ok)) hint('이 브라우저에서는 읽어주기를 지원하지 않아요. 크롬이나 사파리 최신 버전에서 열어 주세요.', 'nosynth');
     return;
   }
   refreshVoices();
@@ -2207,7 +2206,7 @@ function speak(text, rate, cb){
   speakSynth(text, rate, cb);
 }
 function speakSynth(text, rate, cb){
-  if (!synth){ toast('이 브라우저에서는 소리를 지원하지 않아요.'); if (cb) cb(); return; }
+  if (!synth){ if (!(window.DaisyAudio && DaisyAudio.ok)) toast('이 브라우저에서는 소리를 지원하지 않아요.'); if (cb) cb(); return; }
   try { synth.cancel(); } catch(e){}
   var u = new SpeechSynthesisUtterance(String(text));
   u.lang = (voice && voice.lang) || 'en-US';
@@ -2223,7 +2222,7 @@ function speakSeq(words){
   speakSynthSeq(words);
 }
 function speakSynthSeq(words){
-  if (!synth){ toast('이 브라우저에서는 소리를 지원하지 않아요.'); return; }
+  if (!synth){ if (!(window.DaisyAudio && DaisyAudio.ok)) toast('이 브라우저에서는 소리를 지원하지 않아요.'); return; }
   try { synth.cancel(); } catch(e){}
   words.forEach(function(w){
     var u = new SpeechSynthesisUtterance(w);
@@ -2577,7 +2576,7 @@ function speak(text, rate, cb){
   speakSynth(text, rate, cb);
 }
 function speakSynth(text, rate, cb){
-  if (!synth){ toast('이 브라우저에서는 소리를 지원하지 않아요.'); if (cb) cb(); return; }
+  if (!synth){ if (!(window.DaisyAudio && DaisyAudio.ok)) toast('이 브라우저에서는 소리를 지원하지 않아요.'); if (cb) cb(); return; }
   try { synth.cancel(); } catch(e){}
   var u = new SpeechSynthesisUtterance(String(text));
   u.lang = (voice && voice.lang) || 'en-US';
@@ -2593,7 +2592,7 @@ function speakSeq(list){
   speakSynthSeq(list);
 }
 function speakSynthSeq(list){
-  if (!synth){ toast('이 브라우저에서는 소리를 지원하지 않아요.'); return; }
+  if (!synth){ if (!(window.DaisyAudio && DaisyAudio.ok)) toast('이 브라우저에서는 소리를 지원하지 않아요.'); return; }
   try { synth.cancel(); } catch(e){}
   list.forEach(function(t){
     var u = new SpeechSynthesisUtterance(String(t));
