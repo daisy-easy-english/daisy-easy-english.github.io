@@ -65,6 +65,32 @@ h1 .num{font-size:27px;font-weight:800;color:var(--gold);letter-spacing:-0.01em;
 .speed button{min-width:42px;padding:8px 8px;font-variant-numeric:tabular-nums}
 .flag{font-size:14px;line-height:1;font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif}
 
+/* ---------- 무료 자료 바로가기 ---------- */
+.libbar{margin-top:15px;padding:11px 11px 9px;border:1px solid var(--rule);border-radius:16px;
+  background:linear-gradient(180deg,#FFFDF9,#FBF4E7)}
+.libbar-t{margin:0 0 8px;display:flex;align-items:center;gap:5px;font-size:11px;font-weight:800;
+  color:var(--gold);letter-spacing:.01em;line-height:1.2}
+.libbar-t em{font-style:normal;font-size:12px;line-height:1;font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif}
+.libbar-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:5px}
+.libitem{display:flex;align-items:center;gap:9px;padding:8px 10px;min-height:41px;
+  border:1px solid var(--rule);border-radius:12px;background:var(--card);color:var(--ink);
+  text-decoration:none;letter-spacing:0;transition:border-color .15s,box-shadow .15s}
+.libitem .li-ic{flex:0 0 auto;font-size:13px;line-height:1;font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif}
+.libitem .li-tx{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;gap:1px}
+.libitem .li-tx b{display:block;font-size:12.5px;font-weight:800;letter-spacing:-0.02em;line-height:1.3}
+.libitem .li-tx i{display:block;font-style:normal;font-size:10px;color:var(--muted);line-height:1.35;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.libitem .li-ar{flex:0 0 auto;font-size:13px;font-weight:800;color:var(--gold);line-height:1}
+a.libitem:hover{border-color:var(--gold-soft);box-shadow:0 2px 8px rgba(166,117,50,.10)}
+a.libitem:active{border-color:var(--gold)}
+.libitem.on{background:#2A2620;border-color:#2A2620}
+.libitem.on .li-tx b{color:#FFFDF9}
+.libitem.on .li-tx i{color:#C9BCA5}
+.libitem.on .li-ar{color:#F4CE8A}
+.libbar-more{margin:8px 1px 0;font-size:10.5px;line-height:1.45;text-align:right}
+.libbar-more a{color:var(--gold);font-weight:700;text-decoration:none;
+  border-bottom:1px solid #E2D2B6;padding-bottom:1px}
+
 /* ---------- topic quiz ---------- */
 .topicrow{display:grid;grid-template-columns:1.6fr 1fr;gap:8px;margin-top:12px}
 .qcard{display:flex;align-items:center;gap:10px;width:100%;padding:12px 13px;
@@ -149,7 +175,7 @@ h1 .num{font-size:27px;font-weight:800;color:var(--gold);letter-spacing:-0.01em;
 
 /* quiz screen */
 body.qz .hero .lede,body.qz .hero .prog,body.qz .hero .controls,body.qz .hero .modes,
-body.qz .hero .hint,body.qz .hero .search,body.qz .hero h1,body.qz .catalog,
+body.qz .hero .hint,body.qz .hero .search,body.qz .hero h1,body.qz .catalog,body.qz .hero .libbar,
 body.qz .pills,body.qz main,body.qz #empty,body.qz #result,body.qz .foot{display:none!important}
 body.qz .hero{padding-bottom:2px}
 .qz-wrap{padding:6px 0 30px}
@@ -625,6 +651,25 @@ body.sw-on .sww{display:block;}
     <h1><span class="kicker">2022 개정</span>초등 필수 영단어 <span class="num">800</span></h1>
     <p class="lede">교육부 고시 제2022-33호 [별표 3] 초등 권장 어휘 800단어. 아는 단어는 체크하고, 미국·영국 발음으로 들어 보세요. 단어를 누르면 지금 고른 발음으로 읽어 줍니다. <b>영어만</b>·<b>뜻만</b>을 고르면 한쪽을 가린 채 스스로 테스트할 수 있어요.</p>
 
+    <nav class="libbar" aria-label="데이지 무료 자료 바로가기">
+      <p class="libbar-t"><em aria-hidden="true">📚</em>데이지 무료 자료 바로가기</p>
+      <ul class="libbar-list">
+        <li><span class="libitem on" aria-current="page">
+          <span class="li-ic" aria-hidden="true">🔤</span>
+          <span class="li-tx"><b>초등 필수 800단어 앱</b><i>지금 보는 중</i></span>
+          <span class="li-ar" aria-hidden="true">✓</span></span></li>
+        <li><a class="libitem" href="./7-sightwords-100.pdf" download>
+          <span class="li-ic" aria-hidden="true">📄</span>
+          <span class="li-tx"><b>사이트워드 100개 PDF</b><i>14쪽 · 지도와 예문</i></span>
+          <span class="li-ar" aria-hidden="true">↓</span></a></li>
+        <li><a class="libitem" href="./8-grammar-1.pdf" download>
+          <span class="li-ic" aria-hidden="true">📐</span>
+          <span class="li-tx"><b>초등 필수 영문법 1탄 PDF</b><i>8쪽 · be동사·일반동사</i></span>
+          <span class="li-ar" aria-hidden="true">↓</span></a></li>
+      </ul>
+      <p class="libbar-more"><a href="./index.html">사이트워드 100개 안내 페이지 · 웹에서 소리와 퀴즈로 ›</a></p>
+    </nav>
+
     <div class="prog">
       <div class="prow">
         <span>아는 단어</span>
@@ -802,7 +847,7 @@ body.sw-on .sww{display:block;}
     </section>
 
     <p class="phnote">발음은 기기에 설치된 영어 음성(TTS)으로 재생됩니다. 소리가 안 나면 무음 스위치를 끄고 볼륨을 올려 주세요.</p>
-    <a class="phlink" href="./">← 800단어 주제별 단어장 보기</a>
+    <a class="phlink" href="./app.html">← 800단어 주제별 단어장 보기</a>
     <footer class="phfoot">
       근거: 교육부 2022 개정 영어과 교육과정 성취기준 [4영01-04]·[4영02-03] ·
       강원특별자치도교육청 「파닉스 깨치기 for School」<br>
@@ -868,7 +913,7 @@ body.sw-on .sww{display:block;}
     </section>
 
     <p class="swnote">발음은 기기에 설치된 영어 음성(TTS)으로 재생됩니다. 소리가 안 나면 무음 스위치를 끄고 볼륨을 올려 주세요.</p>
-    <a class="swlink" href="./">← 800단어 주제별 단어장 보기</a>
+    <a class="swlink" href="./app.html">← 800단어 주제별 단어장 보기</a>
     <footer class="swfoot">
       근거: 교육부 2022 개정 영어과 교육과정 [별표 3] 기본 어휘(기능어) ·
       Dolch(1936)·Fry(1980) 초등 필수 사이트워드<br>
